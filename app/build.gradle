@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'img-optimizer'
+
+def packageName= "com.haohao.lazy.english.lazyenglish"   // 包名
+def curVersionCode = 1                                   // 当前版本号
+def curVersionName= "1.0.0"                              // 当前版本名称
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    defaultConfig {
+        applicationId   packageName
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode curVersionCode
+        versionName curVersionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk{
+            abiFilters "armeabi", "mips", "x86"  //输出指定三种abi体系结构下的so库。
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compile libraries.supportCardView
+    testCompile libraries.junit
+    compile libraries.otto
+    compile libraries.kotlinStdLib
+    compile libraries.rxJava
+    compile libraries.rxAndroid
+    compile libraries.rxKotlin
+    compile libraries.retrofit
+    compile libraries.retrofitConvertGson
+    compile libraries.retrofitAdapterRxjava2
+    compile libraries.rxBinding
+    compile libraries.glide
+    compile libraries.logger
+    compile libraries.supportDesign
+    compile libraries.supportConstraintLayout
+    compile libraries.glideTransformations
+    compile libraries.shapeView
+    compile libraries.statusBarCompat
+    compile libraries.wechat
+    compile libraries.sina
+    compile libraries.youmeng
+    compile libraries.crazyShadow
+    compile libraries.zxing
+    compile libraries.multidex
+    compile libraries.glideOk3Ext
+    compile libraries.gson
+    compile libraries.eventBus
+}
